@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thumbnails</title>
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* nav bar color */
+            background-color: #6E6E6E;
+        }
+
+        ul.nav li {
+            float: left;
+        }
+
+        ul.nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.nav li a:hover:not(.active) {
+            background-color: #454545;
+        }
+
+        ul.nav li a.active {
+            background-color: #6E6E6E;
+        }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: #454545;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #6E6E6E;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #6E6E6E;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+
+        .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {
+            font-family: "Lora" !important;
+        }
+
+        #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {
+            color: #252525 !important;
+        }
+
+        .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label {
+        }
+
+        .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {
+            font-family: "Droid Sans" !important;
+            font-weight: 400 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+
+        #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {
+            color: #a9a9a9 !important;
+        }
+
+        .wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title {
+        }
+
+        #wsite-title {
+            font-family: "Roboto" !important;
+            letter-spacing: 4px !important;
+        }
+
+        .wsite-menu-default a {
+        }
+
+        .wsite-menu a {
+        }
+
+        .wsite-image div, .wsite-caption {
+        }
+
+
+        .wsite-headline, .wsite-header-section .wsite-content-title {
+            font-family: "Aller" !important;
+            color: #fff !important;
+            letter-spacing: 2px !important;
+        }
+
+        .wsite-headline-paragraph, .wsite-header-section .paragraph {
+            font-family: "Lora" !important;
+        }
+
+        .wsite-button-inner {
+        }
+
+        .wsite-not-footer blockquote {
+        }
+
+        .wsite-footer blockquote {
+        }
+
+        .blog-header h2 a {
+        }
+
+        #wsite-content h2.wsite-product-title {
+        }
+
+        .wsite-product .wsite-product-price a {
+        }
+
+        @media screen and (min-width: 767px) {
+            .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {
+                font-size: 20px !important;
+                line-height: 31px !important;
+            }
+
+            #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {
+            }
+
+            .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label {
+            }
+
+            .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {
+                font-size: 25px !important;
+            }
+
+            #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {
+            }
+
+            .wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title {
+            }
+
+            #wsite-title {
+                font-size: 14px !important;
+            }
+
+            .wsite-menu-default a {
+            }
+
+            .wsite-menu a {
+            }
+
+            .wsite-image div, .wsite-caption {
+            }
+
+            .wsite-headline, .wsite-header-section .wsite-content-title {
+                font-size: 43px !important;
+                line-height: 15px !important;
+            }
+
+            .wsite-headline-paragraph, .wsite-header-section .paragraph {
+                font-size: 18px !important;
+            }
+
+            .wsite-button-inner {
+            }
+
+            .wsite-not-footer blockquote {
+            }
+
+            .wsite-footer blockquote {
+            }
+
+            .blog-header h2 a {
+            }
+
+            #wsite-content h2.wsite-product-title {
+            }
+
+            .wsite-product .wsite-product-price a {
+            }
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li><a href="#index">Home</a></li>
+    <li><a href="#digital">Digital</a></li>
+    <li class="dropdown">
+        <a class="dropbtn" href="javascript:void(0)">Menu</a>
+        <div class="dropdown-content">
+            <a href="#photography">Photography</a>
+            <a href="#projects">Photography</a>
+            <a href="#retrospective-2019">Retrospective</a>
+        </div>
+    </li>
+</ul>
+
+<div class="main-wrap">
+    <div class="wsite-elements wsite-not-footer" id="wsite-content">
+
+        <! white section ––>
+        <div class="wsite-section-wrap">
+            <div class="white-section"
+                 style="height: 125px;">
+            </div>
+        </div>
+
+        <div class="wsite-section-wrap">
+            <div class="wsite-section wsite-body-section wsite-section-bg-image wsite-section-effect-parallax wsite-background-11 wsite-custom-background"
+                 style="height: auto;background-image: url('uploads/Bkgd/lightlilies.jpg') ;background-repeat: no-repeat ;background-position: 50% 50% ;background-size: 100% ;background-color: transparent ;background-size: cover;background-attachment: fixed;">
+                <div class="wsite-section-content">
+                    <div class="container">
+                        <div class="wsite-section-elements">
+                            <div class="wsite-spacer" style="height:49px;"></div>
+
+                            <h2 class="wsite-content-title" style="text-align:center;"><font
+                                    size="7">2019</font><br/></h2>
+
+                            <div>
+                                <div class="wsite-image wsite-image-border-none "
+                                     style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                    <a>
+                                        <img alt="Picture" src='uploads/Art/zachsb.png'
+                                             style="width:623;max-width:100%"/>
+                                    </a>
+                                    <div style="display:block;font-size:90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:31.785667969604%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/sketchpaint.png?1571463977"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:34.874812171253%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/angelina-3.jpg?1571463965"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:33.339519859143%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/f-jennifer2.png?1571463956"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wsite-spacer" style="height:49px;"></div>
+
+                            <h2 class="wsite-content-title" style="text-align:center;"><font size="7">2018</font>
+                            </h2>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:34.065040650407%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/sb-jennifer-l-copy.png?1531611576"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:32.926829268293%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/sb-pl.png?1532030150"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:33.008130081301%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/1/2/9/5/12952191/published/sb-xue-l-copy.png?1531611595"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:45.934959349593%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src='uploads/Art/sb-butterfly.png'
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:54.065040650407%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb1.jpg"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:56.747967479675%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb2.jpg"
+                                                                     style="width:669;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:43.252032520325%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb3.png"
+                                                                     style="width:502;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wsite-spacer" style="height:50px;"></div>
+
+                            <h2 class="wsite-content-title" style="text-align:center;"><font size="7">2017</font>
+                            </h2>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:31.626016260163%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb4.jpg"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:68.373983739837%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                                            <a>
+                                                                <img alt="Picture"
+                                                                     src="uploads/Art/sb5.png?1530238373"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:47.317073170732%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb6.jpg"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="paragraph" style="text-align:right;">Dance Princess
+                                                        - Ink &nbsp; &nbsp;&nbsp;<br/>2.5 hours &nbsp; &nbsp;&nbsp;
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:52.682926829268%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb7.jpg"
+                                                                     style="width:619;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="paragraph" style="text-align:right;">Feathers -
+                                                        Ink<br/>&#8203;2 hours<br/></div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-image wsite-image-border-none "
+                                     style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:right">
+                                    <a>
+                                        <img alt="Picture" src="uploads/Art/sb8.jpg"
+                                             style="width:auto;max-width:100%"/>
+                                    </a>
+                                    <div style="display:block;font-size:90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="paragraph" style="text-align:right;">MFAH Live sketch -&nbsp;Ink &nbsp;
+                                &nbsp; &nbsp; &nbsp;&nbsp;<br/>3 hours &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:53.170731707317%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb9.jpg"
+                                                                     style="width:712;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:46.829268292683%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb10.jpg"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+
+
+                                                    <div class="paragraph" style="text-align:right;">Ink<br/>2
+                                                        hours<br/>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+
+
+                                                    <div class="paragraph" style="text-align:right;">Ink<br/>&#8203;2
+                                                        hours&#8203;
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wsite-spacer" style="height:12px;"></div>
+
+                            <div>
+                                <div class="wsite-multicol">
+                                    <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                                        <table class="wsite-multicol-table">
+                                            <tbody class="wsite-multicol-tbody">
+                                            <tr class="wsite-multicol-tr">
+                                                <td class="wsite-multicol-col"
+                                                    style="width:56.341463414634%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb11.jpg"
+                                                                     style="width:auto;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="paragraph" style="text-align:right;">At the Park&nbsp;Live
+                                                        sketch&nbsp;-&nbsp;&#8203;Ink<br/>20 minutes
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="wsite-multicol-col"
+                                                    style="width:43.658536585366%; padding:0 15px;">
+
+
+                                                    <div>
+                                                        <div class="wsite-image wsite-image-border-none "
+                                                             style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+                                                            <a>
+                                                                <img alt="Picture" src="uploads/Art/sb12.jpg"
+                                                                     style="width:585;max-width:100%"/>
+                                                            </a>
+                                                            <div style="display:block;font-size:90%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="paragraph" style="text-align:right;">Museum&nbsp;Live
+                                                        sketch -&nbsp;Pencil&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        &nbsp;<br/>&#8203;1.5 hours &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        &nbsp; &nbsp;
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wsite-spacer" style="height:14px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wsite-section-wrap">
+            <div class="wsite-section wsite-body-section wsite-background-17 wsite-custom-background"
+                 style="height: 185px;">
+                <div class="wsite-section-content">
+                    <div class="container">
+                        <div class="wsite-section-elements">
+                            <h2 class="wsite-content-title" style="text-align:center;"><font size="2"><a
+                                    href="index.html">HOME</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a><a
+                                    href="retrospective-2019.html">Retrospective&nbsp; &nbsp; &nbsp;
+                                &nbsp;&nbsp;</a><a href="projects.html">Projects&nbsp; &nbsp; &nbsp;
+                                &nbsp;&nbsp;</a><a href="sketches.html">Sketches&nbsp; &nbsp; &nbsp;
+                                &nbsp;&nbsp;</a><a href="digital.html">Digital&nbsp; &nbsp; &nbsp;
+                                &nbsp;&nbsp;</a><a href="photography.html"><font color="#333333">PHOTOGRAPHY</font>&nbsp;
+                                &nbsp; &nbsp; &nbsp;&nbsp;</a><a href="contact.html">contact</a></font></h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
