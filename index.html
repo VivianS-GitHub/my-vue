@@ -179,7 +179,6 @@
         const STYLE_PREFIX = 'wsite';
     </script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
-
     <script src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&" type="text/javascript"></script>
     <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script>
     <script type="text/javascript"> _W = _W || {};
@@ -188,16 +187,10 @@
     _W.customerLocale = "en_US";
     com_currentSite = "194394050908848270";
     com_userID = "12952191";</script>
-    <script type="text/javascript"></script>
     <script src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&" type="text/javascript"></script>
     <script> _W.themePlugins = {"navpane": {"condense": 1024, "forced": 1}};</script>
     <script src='http://cdn2.editmysite.com/js/site/theme-plugins.js?buildTime=1234'></script>
     <script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script>
-    <script type="text/javascript">
-        const IS_ARCHIVE = 1;
-
-        //-->
-    </script>
 
     <!--no dragging photos-->
     <script>
@@ -208,22 +201,21 @@
         });
     </script>
 
-</head>
+    <!--new drop down code cause the past one didn't do its job-->
+    <script>
+        function navopenclose() {
 
-<!--new drop down code cause the past one didn't do its job-->
-<script>
-    function navopenclose() {
-
-        if (document.getElementById("showhide").classList.contains('w-navpane-trigger-active')) {
-            document.getElementById("showhide").className = "hamburger w-navpane-trigger";
-            document.getElementById("showhide2").className = "header-page wsite-theme-light wsite-page-index w-navpane-is-forced w-navpane-is-left w-navpane-is-open nav-open"
-        } else {
-            document.getElementById("showhide").className = "hamburger w-navpane-trigger w-navpane-trigger-active";
-            document.getElementById("showhide2").className = "header-page wsite-theme-light wsite-page-index w-navpane-is-forced w-navpane-is-left"
+            if (document.getElementById("showhide").classList.contains('w-navpane-trigger-active')) {
+                document.getElementById("showhide").className = "hamburger w-navpane-trigger";
+                document.getElementById("showhide2").className = "header-page wsite-theme-light wsite-page-index w-navpane-is-forced w-navpane-is-left w-navpane-is-open nav-open"
+            } else {
+                document.getElementById("showhide").className = "hamburger w-navpane-trigger w-navpane-trigger-active";
+                document.getElementById("showhide2").className = "header-page wsite-theme-light wsite-page-index w-navpane-is-forced w-navpane-is-left"
+            }
         }
-    }
-</script>
+    </script>
 
+</head>
 
 <body class="header-page wsite-theme-light wsite-page-index w-navpane-is-forced" id="showhide2">
 <div class="wrapper">
