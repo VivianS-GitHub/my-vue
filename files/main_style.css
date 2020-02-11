@@ -298,7 +298,6 @@ body.search-open .topbar .search-icon {
 body.search-open .search-bar-wrap .wsite-search {
     padding: 15px 20px;
     height: 60px;
-    opacity: 1;
 }
 
 body.search-open .search-bar-wrap .wsite-search .wsite-search-input {
@@ -310,7 +309,7 @@ body.mini-cart-open .wsite-nav-cart {
 }
 
 body.mini-cart-open .wsite-nav-cart #wsite-nav-cart-a {
-    background-position: bottom center;
+    background-position: top center;
 }
 
 body.mini-cart-open #wsite-mini-cart {
@@ -349,7 +348,9 @@ body.is-scrolling-down .nav-wrap {
     transition: all 250ms ease-in;
 }
 
-body.logo-align-center .logo {
+/*logo*/
+
+/*body.logo-align-center .logo {
     text-align: center;
 }
 
@@ -357,8 +358,9 @@ body.logo-align-center .logo {
     display: table-cell;
     padding: 0 20px;
     vertical-align: middle;
-}
+}*/
 
+/*
 .logo a {
     display: block;
     color: white;
@@ -370,9 +372,9 @@ body.logo-align-center .logo {
     line-height: normal;
     -webkit-transition: all 250ms ease-in;
     -moz-transition: all 250ms ease-in;
-    /*
+    !*
     -ms-transition: all 250ms ease-in;
-    */
+    *!
     -o-transition: all 250ms ease-in;
     transition: all 250ms ease-in;
 }
@@ -394,7 +396,7 @@ body.logo-align-center .logo {
     overflow: hidden;
     max-width: 250px;
     max-height: 50px;
-}
+}*/
 
 .hamburger {
     position: relative;
@@ -627,7 +629,8 @@ body:not(.w-navpane-is-forced) .nav-wrap, body.wsite-editor:not(.w-navpane-is-fo
     background-position: bottom center;
 }
 
-.search-bar-wrap {
+/*search bar*/
+/*.search-bar-wrap {
     position: absolute;
     top: 60px;
     left: 0;
@@ -652,9 +655,9 @@ body.search-open .search-bar-wrap {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     -webkit-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
     -moz-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    /*
+    !*
     -ms-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    */
+    *!
     -o-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
     transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
 }
@@ -680,9 +683,9 @@ body.search-open .search-bar-wrap {
     line-height: normal;
     -webkit-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
     -moz-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    /*
+    !*
     -ms-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    */
+    *!
     -o-transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
     transition: all 200ms cubic-bezier(0, 0.53, 0.85, 0.7);
 }
@@ -699,8 +702,9 @@ body.search-open .search-bar-wrap {
     background: url(theme/images/icon-search-grey.png?1580275090) no-repeat;
     background-size: 100%;
     cursor: pointer;
-}
-
+}*/
+/*mini cart*/
+/*
 .wsite-nav-cart {
     display: table-cell;
     vertical-align: middle;
@@ -709,9 +713,9 @@ body.search-open .search-bar-wrap {
     cursor: pointer;
     -webkit-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
     -moz-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    /*
+    !*
     -ms-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    */
+    *!
     -o-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
     transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
 }
@@ -752,9 +756,9 @@ body.search-open .search-bar-wrap {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     -webkit-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
     -moz-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    /*
+    !*
     -ms-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
-    */
+    *!
     -o-transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
     transition: all 250ms cubic-bezier(0, 0.53, 0.85, 0.7);
 }
@@ -843,7 +847,7 @@ body.search-open .search-bar-wrap {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     line-height: normal;
-}
+}*/
 
 .wsite-header-section {
     height: 600px;
@@ -2861,6 +2865,7 @@ div.paragraph ol, div.paragraph ol li {
     list-style: decimal outside !important;
 }
 
+/*
 .product-grid .product-grid-image .product-grid__image-sale-banner-wrapper {
     background: #666666;
 }
@@ -2871,4 +2876,4 @@ div.paragraph ol, div.paragraph ol li {
 
 #wsite-search-product-results .wsite-search-product-result .wsite-search-product-image-container .search__image-sale-banner-wrapper {
     background: #666666;
-}
+}*/
