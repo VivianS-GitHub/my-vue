@@ -1,30 +1,62 @@
+:root {
+    --pink: #F27B93;
+    --lightpink: #F9C5D0;
+    --breakpoint-m: 825px;
+    --breakpoint-s: 421px;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    scrollbar-width: thin;
+}
+
 body {
-    background-color: black;
-    /*padding-top: 0px;*/
-    /*margin-top: 0px;*/
-    /*width: 1rem;*/
-    width: 100%;
-    margin: 0;
+    width: 100vw;
     padding: 0;
     border: 0;
     outline: 0;
+    margin: 100px 0 0;
     font-family: "Roboto Light", Helvetica, Arial, sans-serif;
+    background-color: black;
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+    overflow-y: overlay;
+}
+
+body::-webkit-scrollbar {
+    width: 9px;
+    background-color: transparent;
+    position: fixed;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(242, 123, 147, 0.9);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(242, 123, 147, 0.5);
 }
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-}
 
 /*320 768 1024 1366 1920*/
+/* 842 */
 
 header {
+    background: -webkit-linear-gradient(black, transparent);
+    z-index: 1;
     width: 100%;
     padding: 10px calc(4vw + 10px);
+    top: 0;
     height: 100px;
     float: right;
     position: fixed;
@@ -58,11 +90,31 @@ nav {
     text-align: right;
     margin: 10px;
     position: relative;
+    transition: 0.15s ease-out;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    top: 10%;
+    left: 50%;
+    background: rgba(242, 123, 147, 0.26);
+    border-radius: 2px;
+    transition: all .25s ease-out;
+    height: 80%;
+    bottom: 10%;
+}
+
+.nav-link:hover:after {
+    left: 0;
+    background: rgba(242, 123, 147, 0.26);
+    width: 100%;
 }
 
 main {
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: calc(18vh + 100px);
     left: calc(20vw + 20px);
     right: calc(34vw + 20px);
@@ -78,12 +130,12 @@ h1 {
 
 .vivian {
     font-weight: 400;
-    color: #F27B93;
+    color: var(--pink);
 }
 
 .yu {
     font-weight: 500;
-    color: #F9C5D0;
+    color: var(--lightpink);
 }
 
 .icon-link {
@@ -93,3 +145,55 @@ h1 {
     width: 48px;
     left: -10px;
 }
+
+.pink-line {
+    top: calc(31.5vw + 100px);
+    left: 0;
+    width: 100vw;
+    position: absolute;
+}
+
+.recent {
+    top: calc(89.5vw + 100px);
+    left: 4.2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-size: calc(33px + (60 - 33) * ((100vw - var(--breakpoint-m)) / (1440 - 825)));
+    font-weight: 400;
+    color: white;
+    transform: skewY(-27deg);
+    position: absolute;
+}
+
+.paper {
+    position: absolute;
+    top: calc(85vw + 100px);
+    left: 30.4vw;
+    width: 30.2vw;
+    display: inline;
+    z-index: 2;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3.5vw);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.right {
+    position: fixed;
+    width: calc(1.4vw + 30px);
+    right: calc(5.8vw - 24px);
+    top: 50%;
+    animation: float 10s ease-in-out infinite;
+    opacity: 100%;
+}
+
+/* made with 💖 and boredom from the corona virus */
+
