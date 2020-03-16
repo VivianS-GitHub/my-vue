@@ -1,8 +1,10 @@
 :root {
-    --pink: #F27B93;
-    --lightpink: #F9C5D0;
+    --pink: 242, 123, 147; /*#f27b93*/
+    --lightpink: 249, 197, 208; /*#f9c5d0*/
     --breakpoint-m: 825px;
     --breakpoint-s: 421px;
+    --textcolor: 255, 255, 255;
+    --background-color: 0, 0, 0;
 }
 
 html {
@@ -22,25 +24,31 @@ body {
     border: 0;
     outline: 0;
     margin: 100px 0 0;
-    font-family: "Roboto Light", Helvetica, Arial, sans-serif;
-    background-color: black;
+    font-family: 'Didact Gothic', sans-serif, "Roboto Light", Helvetica, Arial, sans-serif;
+    background-color: rgb(var(--background-color));
     overflow-x: hidden;
     -ms-overflow-x: hidden;
     overflow-y: overlay;
+    color: rgb(var(--textcolor));
 }
 
 body::-webkit-scrollbar {
     width: 9px;
-    background-color: transparent;
+    background: -webkit-linear-gradient(top, rgb(var(--background-color)), transparent 100px);
     position: fixed;
+    z-index: 0;
 }
 
-body::-webkit-scrollbar-thumb:hover{
-    background-color: rgba(242, 123, 147, 0.9);
+body::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--pink));
+    z-index: 0;
+
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: rgba(242, 123, 147, 0.5);
+    background-color: rgba(var(--pink), 0.5);
+    z-index: 0;
+
 }
 
 * {
@@ -52,7 +60,7 @@ body::-webkit-scrollbar-thumb {
 /* 842 */
 
 header {
-    background: -webkit-linear-gradient(black, transparent);
+    background: -webkit-linear-gradient(rgb(var(--background-color)), transparent);
     z-index: 1;
     width: 100%;
     padding: 10px calc(4vw + 10px);
@@ -82,10 +90,12 @@ nav {
     float: right;
 }
 
-.nav-link {
+a {
     text-decoration: none;
-    color: white;
-    font-family: 'Didact Gothic', sans-serif;
+    color: rgb(var(--textcolor));
+}
+
+nav a {
     padding: 20px;
     text-align: right;
     margin: 10px;
@@ -93,22 +103,28 @@ nav {
     transition: 0.15s ease-out;
 }
 
-.nav-link:after {
+nav a:after {
     content: '';
     position: absolute;
     width: 0;
     top: 10%;
     left: 50%;
-    background: rgba(242, 123, 147, 0.26);
+    background: rgba(var(--pink), 0.26);
     border-radius: 2px;
     transition: all .25s ease-out;
     height: 80%;
     bottom: 10%;
 }
 
-.nav-link:hover:after {
+nav a:active:hover:after {
     left: 0;
-    background: rgba(242, 123, 147, 0.26);
+    background: rgba(var(--pink), .5);
+    width: 100%;
+}
+
+nav a:hover:after {
+    left: 0;
+    background: rgba(var(--pink), 0.26);
     width: 100%;
 }
 
@@ -118,6 +134,7 @@ main {
     top: calc(18vh + 100px);
     left: calc(20vw + 20px);
     right: calc(34vw + 20px);
+    z-index: 2;
 }
 
 h1 {
@@ -125,17 +142,16 @@ h1 {
     font-style: normal;
     font-weight: 200;
     font-size: calc(2em + 1vw);
-    color: white;
 }
 
 .vivian {
     font-weight: 400;
-    color: var(--pink);
+    color: rgb(var(--pink));
 }
 
 .yu {
     font-weight: 500;
-    color: var(--lightpink);
+    color: rgb(var(--lightpink));
 }
 
 .icon-link {
@@ -159,7 +175,6 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: calc(33px + (60 - 33) * ((100vw - var(--breakpoint-m)) / (1440 - 825)));
     font-weight: 400;
-    color: white;
     transform: skewY(-27deg);
     position: absolute;
 }
@@ -170,7 +185,6 @@ h1 {
     left: 30.4vw;
     width: 30.2vw;
     display: inline;
-    z-index: 2;
     animation: float 5s ease-in-out infinite;
 }
 
@@ -186,14 +200,106 @@ h1 {
     }
 }
 
+
 .right {
     position: fixed;
     width: calc(1.4vw + 30px);
-    right: calc(5.8vw - 24px);
+    right: calc(5.8vw - 15px);
     top: 50%;
     animation: float 10s ease-in-out infinite;
-    opacity: 100%;
+    opacity: 50%;
+    z-index: 1;
+}
+
+@supports (overflow-y: overlay) {
+    .right {
+        position: fixed;
+        width: calc(1.4vw + 30px);
+        right: calc(5.8vw - 15px - 9px);
+        top: 50%;
+        animation: float 10s ease-in-out infinite;
+        opacity: .5;
+        z-index: 1;
+    }
+}
+
+.right:hover {
+    opacity: 1;
 }
 
 /* made with 💖 and boredom from the corona virus */
 
+footer {
+    background-color: rgba(var(--pink), .73);
+    height: 350px;
+    padding: 50px;
+    position: absolute;
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: calc(.5vw + 11px);
+    line-height: 40px;
+}
+
+footer a {
+    opacity: .85;
+}
+
+footer a:hover {
+    opacity: 1;
+}
+
+h3 {
+    font-weight: normal;
+    font-style: normal;
+    font-size: calc(1vw + 9px);
+    line-height: 48px;
+    display: block;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.icon a {
+    padding: 8px;
+    left: -6px;
+}
+
+.footer-madewithlove {
+    width: 260px;
+    position: absolute;
+    left: 11%;
+    top: 75px;
+}
+
+.footer-madewithlove img {
+    width: 85px;
+}
+
+.footer-nav {
+    position: absolute;
+    right: 38%;
+}
+
+.footer-connect {
+    position: absolute;
+    right: 7%;
+}
+
+li img {
+    float: none;
+    position: relative;
+    margin-right: 14px;
+    width: 21px;
+    box-sizing: content-box;
+    height: 21px;
+    left: -6px;
+    top: 4px;
+    display: inline-block;
+}
