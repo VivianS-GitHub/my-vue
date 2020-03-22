@@ -36,14 +36,8 @@ body {
     background-color: rgb(var(--background-color));
     overflow-x: hidden;
     -ms-overflow-x: hidden;
-    overflow-y: overlay;
+    /*overflow-y: overlay; <<No longer supported*/
     color: rgb(var(--textcolor));
-}
-
-.scrollable {
-    background-size: auto auto;
-    background-repeat: no-repeat;
-    background-position: top left;
 }
 
 /* =Scrollbar
@@ -120,7 +114,7 @@ nav a:after {
     position: absolute;
     width: 0;
     top: 10%;
-    left: 50%;
+    right: 50%;
     background: rgba(var(--pink), 0.26);
     border-radius: 2px;
     transition: all .25s ease-out;
@@ -128,14 +122,8 @@ nav a:after {
     bottom: 10%;
 }
 
-nav a:active:hover:after {
-    left: 0;
-    background: rgba(var(--pink), .5);
-    width: 100%;
-}
-
 nav a:hover:after {
-    left: 0;
+    right: 0;
     background: rgba(var(--pink), 0.26);
     width: 100%;
 }
@@ -281,19 +269,37 @@ h2 {
 .works {
     border-radius: 4px;
     transition: .5s ease-in-out;
+    display: block;
+    position: absolute;
+    height: 25vw;
+    width: 40vw;
+background-size: cover;
+
 }
 
 .works:after {
     position: absolute;
     content: '';
-    bottom: -20%;
+    bottom: -15%;
     left: 0;
     width: 90%;
     height: inherit;
     background: inherit;
-    filter: blur(1.5em);
+    filter: blur(1em);
     opacity: .5;
     z-index: -1;
+}
+
+#rec-1 {
+    top: 116vw;
+    right: 13vw;
+    background-image: url("uploads/Art/shan-xi.jpg")
+}
+
+#rec-2{
+    top: 142vw;
+    left: 13vw;
+    background-image: url("uploads/Art/fall19painting.png");
 }
 
 /* =Footer
@@ -453,6 +459,15 @@ ul {
 
     /* =Works
     ------------------------------------------ */
+
+    #rec-1{
+        top: calc(105vw + 200px);
+    }
+
+    #rec-2{
+        top: calc(130vw + 200px);
+    }
+
     /* =Footer
     ------------------------------------------ */
     footer {
@@ -597,7 +612,7 @@ ul {
     }
 
     .icon img {
-        margin-right:  1vw;
+        margin-right: 1vw;
         left: -13px;
         width: 1.5vw;
         height: 1.5vw;
