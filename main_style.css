@@ -3,6 +3,7 @@
     --lightpink: 249, 197, 208; /*#f9c5d0*/
     --textcolor: 255, 255, 255;
     --background-color: 0, 0, 0;
+    --top-adjust: 0vw;
 }
 
 html {
@@ -174,28 +175,8 @@ h1 {
 /* =Floating elements
 ------------------------------------------ */
 
-#pink-line {
-    top: 38vw;
-    left: 0;
-    width: 100vw;
-    position: absolute;
-}
-
-#recent {
-    top: 96.5vw;
-    left: 4.2vw;
-    position: absolute;
-    font-size: calc(33px + (60 - 33) * ((100vw - 834px) / (1440 - 834)));
-}
-
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    transform: skewY(-27deg);
-}
-
 #paper {
-    top: 93vw;
+    top: calc(93vw + var(--top-adjust));
     left: 30.4vw;
     width: 30.2vw;
 }
@@ -210,9 +191,22 @@ h2 {
     position: absolute;
     display: inline;
     animation: float 5s ease-in-out infinite;
+    -o-animation: float 5s ease-in-out infinite;
 }
 
 @keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3.5vw);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@-o-keyframes float {
     0% {
         transform: translateY(0);
     }
@@ -230,6 +224,7 @@ h2 {
     right: calc(5.7vw - 30px);
     top: 50%;
     animation: float 10s ease-in-out infinite;
+    -o-animation: float 10s ease-in-out infinite;
     opacity: .5;
     z-index: 1;
 }
@@ -255,6 +250,7 @@ h2 {
     left: 4.4vw;
     top: 50%;
     animation: float 10s ease-in-out infinite;
+    -o-animation: float 10s ease-in-out infinite;
     opacity: .5;
     z-index: 1;
 }
@@ -263,43 +259,225 @@ h2 {
     opacity: 1;
 }
 
-/* =Works
+/* =Titles
 ------------------------------------------ */
 
-.works {
-    border-radius: 4px;
-    transition: .5s ease-in-out;
-    display: block;
+#pink-line {
+    top: calc(38vw + var(--top-adjust));
+    left: 0;
+    width: 100vw;
     position: absolute;
-    height: 25vw;
-    width: 40vw;
-background-size: cover;
-
 }
 
-.works:after {
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    transform: skewY(-27deg);
     position: absolute;
-    content: '';
-    bottom: -15%;
-    left: 0;
-    width: 90%;
-    height: inherit;
-    background: inherit;
-    filter: blur(1em);
-    opacity: .5;
+}
+
+#recent {
+    top: 96.5vw;
+    left: 4.2vw;
+    font-size: calc(33px + (60 - 33) * ((100vw - 834px) / (1440 - 834)));
+}
+
+#retrospective {
+    top: 275vw;
+    left: 20vw;
+    font-size: calc(30px + (50 - 33) * ((100vw - 834px) / (1440 - 834)));
     z-index: -1;
 }
 
-#rec-1 {
-    top: 116vw;
-    right: 13vw;
-    background-image: url("uploads/Art/shan-xi.jpg")
+
+/* =Works
+------------------------------------------ */
+
+figure {
+    position: absolute;
+    transition: .5s ease-out;
+    margin: 0;
 }
 
-#rec-2{
-    top: 142vw;
+figure img {
+    border-radius: .5vw;
+    height: 100%;
+    width: 100%;
+}
+
+.shadow {
+    position: absolute;
+    bottom: -14%;
+    left: 0;
+    width: 90%;
+    height: inherit;
+    filter: blur(2vw);
+    opacity: .7;
+    z-index: -1;
+}
+
+figure:hover figcaption {
+    opacity: 1;
+}
+
+figcaption {
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    position: absolute;
+    left: calc(-14px - 1.6vw);
+    opacity: .2;
+    font-size: calc(13px + .8vw);
+    transition: .5s ease-out;
+    white-space: nowrap
+}
+
+.recent-1 {
+    top: calc(116vw + var(--top-adjust));
+    right: 13vw;
+    height: 24vw;
+    width: 42vw;
+}
+
+.recent-1:hover {
+    top: calc(104vw + var(--top-adjust));
+    width: 63vw;
+    height: 36vw;
+}
+
+.recent-2 {
+    top: calc(142vw + var(--top-adjust));
     left: 13vw;
-    background-image: url("uploads/Art/fall19painting.png");
+    height: 25vw;
+    width: 40vw;
+}
+
+.recent-2:hover {
+    width: 60vw;
+    height: 37.5vw;
+}
+
+.recent-3 {
+    top: calc(210vw + var(--top-adjust));
+    left: 16vw;
+    height: 30vw;
+    width: 20vw;
+}
+
+.recent-3:hover {
+    width: 30vw;
+    height: 45vw;
+    top: calc(195vw + var(--top-adjust));
+}
+
+.recent-4 {
+    top: calc(245vw + var(--top-adjust));
+    left: 10vw;
+    height: 26vw;
+    width: 20vw;
+}
+
+.recent-4:hover {
+    width: 30vw;
+    height: 39vw;
+}
+
+.slide-show {
+    top: calc(282vw + var(--top-adjust));
+    right: 18vw;
+    position: absolute;
+    animation: blend 40s linear infinite;
+    -o-animation: blend 40s linear infinite;
+    opacity: 0;
+    height: 36vw;
+    width: 27vw;
+}
+
+@keyframes blend {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    15% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes blend {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    15% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.retro-1 {
+    animation-delay: -2s;
+    -o-animation-delay: -2s;
+}
+
+.retro-2 {
+    animation-delay: 2s;
+    -o-animation-delay: 2s;
+}
+
+.retro-3 {
+    animation-delay: 6s;
+    -o-animation-delay: 6s;
+}
+
+.retro-4 {
+    animation-delay: 10s;
+    -o-animation-delay: 10s;
+}
+
+.retro-5 {
+    animation-delay: 14s;
+    -o-animation-delay: 14s;
+}
+
+.retro-6 {
+    animation-delay: 18s;
+    -o-animation-delay: 18s;
+}
+
+.retro-7 {
+    animation-delay: 22s;
+    -o-animation-delay: 22s;
+}
+
+.retro-8 {
+    animation-delay: 26s;
+    -o-animation-delay: 26s;
+}
+
+.retro-9 {
+    animation-delay: 30s;
+    -o-animation-delay: 30s;
+}
+
+.retro-10 {
+    animation-delay: 34s;
+    -o-animation-delay: 34s;
+    width: 55vw;
+    right: 4vw;
 }
 
 /* =Footer
@@ -382,6 +560,10 @@ ul {
 
 @media (max-width: 834px) {
 
+    :root{
+        --top-adjust: 200px - 12vw;
+    }
+
     #intro {
         right: 11%;
         width: 75%;
@@ -435,19 +617,6 @@ ul {
 
     /* =Floating elements
     ------------------------------------------ */
-    #pink-line {
-        top: calc(26vw + 203px);
-    }
-
-    #recent {
-        top: calc(94.5vw + 125px);
-        font-size: calc(26px + (33 - 26) * ((100vw - 375px) / (834 - 375)));
-        font-weight: 300;
-    }
-
-    #paper {
-        top: calc(80vw + 200px);
-    }
 
     .right {
         right: calc(5.8vw - 15px);
@@ -457,15 +626,17 @@ ul {
         top: calc(57% - 10vw);
     }
 
-    /* =Works
+    /* =Titles
     ------------------------------------------ */
 
-    #rec-1{
-        top: calc(105vw + 200px);
+    #recent {
+        top: calc(94.5vw + 125px);
+        font-size: calc(26px + (33 - 26) * ((100vw - 375px) / (834 - 375)));
+        font-weight: 300;
     }
 
-    #rec-2{
-        top: calc(130vw + 200px);
+    #retrospective {
+        top: calc(260vw + 200px);
     }
 
     /* =Footer
