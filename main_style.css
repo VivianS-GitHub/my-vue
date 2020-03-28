@@ -129,6 +129,10 @@ nav a:hover:after {
     width: 100%;
 }
 
+#hamburger, .hamburger-icon {
+    display: none;
+}
+
 /* =Main
 ------------------------------------------ */
 
@@ -560,7 +564,7 @@ ul {
 
 @media (max-width: 834px) {
 
-    :root{
+    :root {
         --top-adjust: 200px - 12vw;
     }
 
@@ -597,7 +601,7 @@ ul {
         padding: 15px;
     }
 
-    header img {
+    .header-logo img {
         width: calc(48px - (834px - 100vw) / 40);
     }
 
@@ -606,6 +610,22 @@ ul {
         left: calc(14% - 30px);
         top: -10px;
         margin: 0;
+    }
+
+    .hamburger-icon {
+        display: block;
+        width: calc(48px - (834px - 100vw) / 40);
+        float: right;
+        margin: 20px calc(14% - 30px) 20px 20px;
+        box-sizing: content-box;
+    }
+
+    .st0 {
+        fill: none;
+    }
+
+    .st1 {
+        fill: rgb(var(--textcolor));
     }
 
     /* =Main
@@ -617,7 +637,6 @@ ul {
 
     /* =Floating elements
     ------------------------------------------ */
-
     .right {
         right: calc(5.8vw - 15px);
     }
@@ -628,7 +647,6 @@ ul {
 
     /* =Titles
     ------------------------------------------ */
-
     #recent {
         top: calc(94.5vw + 125px);
         font-size: calc(26px + (33 - 26) * ((100vw - 375px) / (834 - 375)));
