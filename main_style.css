@@ -519,6 +519,14 @@ h2 {
     top: 35%;
     font-weight: 300;
     font-size: calc(3em + 1vw);
+    opacity: 1;
+}
+
+.title-slice img{
+    width: 100%;
+    object-fit: cover;
+    opacity: .9;
+    filter: blur(2px);
 }
 
 .blank-slice {
@@ -649,7 +657,7 @@ ul {
 @media (max-width: 834px) {
 
     :root {
-        --top-adjust: 200px -12vw;
+        --top-adjust: 200px - 12vw;
     }
 
     #intro {
