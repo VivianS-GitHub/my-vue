@@ -1,6 +1,7 @@
 :root {
     --pink: 242, 123, 147; /*#f27b93*/
     --lightpink: 249, 197, 208; /*#f9c5d0*/
+    --invert-value: 0%;
     --textcolor: 255, 255, 255;
     --background-color: 0, 0, 0;
     --top-adjust: 0vw;
@@ -46,7 +47,6 @@ body {
 
 body::-webkit-scrollbar {
     width: 9px;
-    background: -webkit-linear-gradient(top, rgb(var(--background-color)), transparent 100px);
     position: fixed;
 }
 
@@ -133,12 +133,12 @@ nav a:hover:after {
     display: none;
 }
 
-.hamburger-menu{
+.hamburger-menu {
     background-color: rgb(var(--pink));
-    height: 60vh;
+    height: 100vh;
     width: 100vw;
     left: 0;
-    top: -60vh;
+    top: -100vh;
     position: absolute;
     transition: .5s ease-out;
 }
@@ -153,9 +153,6 @@ main {
     float: right;
     margin: 0;
     padding: 0;
-}
-
-#intro {
     top: calc(9vw + 100px);
     left: calc(20vw + 20px);
     right: calc(34vw + 20px);
@@ -184,6 +181,11 @@ h1 {
     position: relative;
     width: 48px;
     left: -10px;
+}
+
+.icon-link img {
+    -webkit-filter: invert(var(--invert-value));
+    -ms-filter: invert(var(--invert-value));
 }
 
 /* =Floating elements
@@ -307,19 +309,19 @@ h2 {
 /* =Works
 ------------------------------------------ */
 
-figure {
+.main-works figure {
     position: absolute;
     transition: .5s ease-out;
     margin: 0;
 }
 
-figure img {
+.main-works figure img {
     border-radius: .5vw;
     height: 100%;
     width: 100%;
 }
 
-.shadow {
+.main-works .shadow {
     position: absolute;
     bottom: -14%;
     left: 0;
@@ -330,11 +332,11 @@ figure img {
     z-index: -1;
 }
 
-figure:hover figcaption {
+.main-works figure:hover figcaption {
     opacity: 1;
 }
 
-figcaption {
+.main-works figcaption {
     transform: rotate(-90deg);
     transform-origin: 0 0;
     position: absolute;
@@ -342,7 +344,7 @@ figcaption {
     opacity: .2;
     font-size: calc(13px + .8vw);
     transition: .5s ease-out;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .recent-1 {
@@ -494,15 +496,83 @@ figcaption {
     right: 4vw;
 }
 
+.flex-works {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.title-slice {
+    position: relative;
+    height: 35vw;
+    width: 100vw;
+    text-align: right;
+    display: flex;
+    margin: 0;
+}
+
+.title-slice h1 {
+    left: 20vw;
+    position: absolute;
+    top: 35%;
+    font-weight: 300;
+    font-size: calc(3em + 1vw);
+}
+
+.blank-slice {
+    height: 15vh;
+}
+
+.works {
+    position: relative;
+    height: 40vh;
+    text-align: right;
+    display: flex;
+    margin: 50px 15px;
+    padding: 0;
+}
+
+.works img {
+    height: 100%;
+    right: 0;
+}
+
+.works figcaption {
+    bottom: -40px;
+    position: absolute;
+    font-weight: 100;
+    right: 10px;
+}
+
+.works figcaption h1{
+    font-size: calc(1.5em + .5vw);
+}
+
+.works figcaption h3{
+    font-size: calc(1em + .2vw);
+}
+
+.works figcaption::after {
+    width: 120%;
+    background-color: rgba(var(--textcolor), .2);
+    height: 110%;
+    right: -10%;
+    top: 0;
+    content: '';
+    position: absolute;
+}
+
 /* =Footer
 ------------------------------------------ */
 
 footer {
-    background-color: rgba(var(--pink), .73);
+    background-color: rgba(var(--pink), .9);
     height: 350px;
     padding: 50px;
     position: absolute;
-    width: 100%;
+    width: 100vw;
     font-style: normal;
     font-weight: normal;
     font-size: calc(.5vw + 11px);
@@ -549,6 +619,8 @@ ul {
     height: 21px;
     top: 4px;
     display: inline-block;
+    -webkit-filter: invert(var(--invert-value));
+    -ms-filter: invert(var(--invert-value));
 }
 
 .footer-madewithlove {
@@ -560,6 +632,8 @@ ul {
 
 .footer-madewithlove img {
     width: 85px;
+    -webkit-filter: invert(var(--invert-value));
+    -ms-filter: invert(var(--invert-value));
 }
 
 .footer-nav {
@@ -575,7 +649,7 @@ ul {
 @media (max-width: 834px) {
 
     :root {
-        --top-adjust: 200px - 12vw;
+        --top-adjust: 200px -12vw;
     }
 
     #intro {
@@ -606,7 +680,7 @@ ul {
     nav {
         transition: .5s ease-out;
         font-size: larger;
-        top: -60vh;
+        top: -100vh;
         position: absolute;
         display: -webkit-box;
         display: -moz-box;
@@ -615,7 +689,7 @@ ul {
         display: inline-flex;
         flex-direction: column;
         float: left;
-        left: calc(50% - 90px);
+        left: calc(50% - 70px);
     }
 
     header {
@@ -675,7 +749,7 @@ ul {
     }
 
     #hamburger:checked ~ nav {
-        top: 0;
+        top: 60px;
     }
 
     #hamburger:checked ~ .hamburger-menu {
