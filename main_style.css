@@ -160,6 +160,7 @@ main {
 
 h1 {
     font-family: 'Montserrat', sans-serif;
+    left: calc(20vw + 20px);
     font-style: normal;
     font-weight: 200;
     font-size: calc(2em + 1vw);
@@ -522,7 +523,7 @@ h2 {
     opacity: 1;
 }
 
-.title-slice img{
+.title-slice img {
     width: 100%;
     object-fit: cover;
     opacity: .9;
@@ -544,30 +545,38 @@ h2 {
 
 .works img {
     height: 100%;
-    right: 0;
 }
 
 .works figcaption {
-    bottom: -40px;
+    top: calc(100% + 2px);
     position: absolute;
     font-weight: 100;
     right: 10px;
 }
 
-.works figcaption h1{
-    font-size: calc(1.5em + .5vw);
+h4 {
+    font-size: calc(1.4em + .4vw);
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    margin: 0;
 }
 
-.works figcaption h3{
-    font-size: calc(1em + .2vw);
+h5 {
+    font-size: calc(1em + .3vw);
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    line-height: 0;
+    padding-bottom: 30px;
 }
 
 .works figcaption::after {
-    width: 120%;
+    width: calc(100% + 40px);
     background-color: rgba(var(--textcolor), .2);
-    height: 110%;
-    right: -10%;
-    top: 0;
+    height: calc(100% + 20px);
+    right: -20px;
+    top: -10px;
     content: '';
     position: absolute;
 }
@@ -657,7 +666,7 @@ ul {
 @media (max-width: 834px) {
 
     :root {
-        --top-adjust: 200px - 12vw;
+        --top-adjust: 200px -12vw;
     }
 
     #intro {
