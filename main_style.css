@@ -523,7 +523,7 @@ h2 {
     position: absolute;
     top: 35%;
     font-weight: 300;
-    font-size: calc(3em + 1vw);
+    font-size: calc(1.5em + 2.5vw);
     opacity: 1;
 }
 
@@ -668,7 +668,7 @@ ul {
     right: 7%;
 }
 
-@media (max-width: 834px) {
+@media (max-width: 842px) {
 
     :root {
         --top-adjust: 200px - 12vw;
@@ -711,7 +711,11 @@ ul {
         display: inline-flex;
         flex-direction: column;
         float: left;
-        left: calc(50% - 70px);
+        left: calc(50%);
+    }
+
+    nav a {
+        left: -50%;
     }
 
     header {
@@ -793,6 +797,23 @@ ul {
 
     #resume {
         top: calc(57% - 10vw);
+    }
+
+    /* =Works
+    ------------------------------------------ */
+
+    .works{
+        height: auto;
+        width: 75vw;
+    }
+
+    .works img {
+        height: auto;
+        width: 75vw;
+    }
+
+    .flex-works {
+        margin: 0;
     }
 
     /* =Titles
