@@ -784,8 +784,12 @@ ul {
 
     /* =Main
     ------------------------------------------ */
-    h1 {
+    main h1 {
         font-weight: 300;
+    }
+
+    h1 {
+        font-weight: 400;
         font-size: calc(24px + (40.24 - 24) * ((100vw - 375px) / (834 - 375)));
     }
 
@@ -801,8 +805,7 @@ ul {
 
     /* =Works
     ------------------------------------------ */
-
-    .works{
+    .works {
         height: auto;
         width: 75vw;
     }
@@ -957,6 +960,21 @@ ul {
 
     /* =Works
     ------------------------------------------ */
+    h4 {
+        font-size: 2vw;
+    }
+
+    .works figcaption::after {
+        width: calc(100% + 4vw);
+        height: calc(100% + 2vw);
+        right: -2vw;
+        top: -1vw;
+    }
+
+    .works {
+        margin: 3.5vw 1.5vw;
+    }
+
     /* =Footer
     ------------------------------------------ */
     footer {
